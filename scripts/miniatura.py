@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Guarda em assets/miniaturas/ a miniatura de cada post do Instagram.
+"""Guarda em assets/miniaturas/ o primeiro slide de cada post do Instagram, inteiro.
 
-  python3 scripts/miniatura.py                    posts de data/links.yaml sem miniatura
+  python3 scripts/miniatura.py                    posts de data/links.yaml (campo instagram) sem miniatura
   python3 scripts/miniatura.py URL [URL ...]      posts indicados (substitui as existentes)
   python3 scripts/miniatura.py URL --ficheiro F   usa uma imagem guardada à mão
 """
@@ -19,7 +19,7 @@ PASTA = RAIZ / "assets" / "miniaturas"
 DADOS = RAIZ / "data" / "links.yaml"
 
 RE_POST = re.compile(r"https://(?:www\.)?instagram\.com/(?:[\w.]+/)?(?:p|reel|tv)/([\w-]+)")
-RE_META = re.compile(r"<meta\b[^>]*>", re.I)
+RE_CAMPO = re.compile(r"""^[ \t-]*instagram:[ \t]*["']?(\S+?)["']?[ \t]*$""", re.M)
 RE_EMBED = re.compile(r'<img\b[^>]*class="[^"]*EmbeddedMediaImage[^"]*"[^>]*>', re.I)
 RE_ATRIBUTO = r'\b%s="([^"]*)"'
 ANFITRIOES = ("cdninstagram.com", "fbcdn.net")
@@ -43,9 +43,6 @@ def atributo(tag, nome):
 
 
 def imagem_na_pagina(pagina):
-    for tag in RE_META.findall(pagina):
-        if atributo(tag, "property") == "og:image":
-            return atributo(tag, "content")
     m = RE_EMBED.search(pagina)
     return atributo(m.group(0), "src") if m else None
 
@@ -76,14 +73,14 @@ def obter(url):
 
 
 def descarregar(codigo):
-    for caminho in (f"p/{codigo}/", f"p/{codigo}/embed/"):
-        try:
-            pagina = obter(f"https://www.instagram.com/{caminho}").decode("utf-8", "replace")
-        except urllib.error.URLError:
-            continue
+    # Só a página embed serve o slide inteiro: o og:image da página do post vem recortado ao centro.
+    try:
+        pagina = obter(f"https://www.instagram.com/p/{codigo}/embed/").decode("utf-8", "replace")
         imagem = imagem_na_pagina(pagina)
         if imagem and anfitriao_permitido(imagem):
             return obter(imagem)
+    except urllib.error.URLError:
+        pass
     raise Falha(
         "o Instagram não devolveu a imagem sem sessão iniciada. "
         "Guarda a imagem à mão e usa --ficheiro."
@@ -101,8 +98,9 @@ def guardar(codigo, dados):
 
 
 def urls_em_falta():
-    urls = RE_POST.findall(DADOS.read_text(encoding="utf-8"))
-    return [c for c in dict.fromkeys(urls) if not any(PASTA.glob(f"{c}.*"))]
+    urls = RE_CAMPO.findall(DADOS.read_text(encoding="utf-8"))
+    codigos = dict.fromkeys(codigo_do_post(u) for u in urls)
+    return [c for c in codigos if not any(PASTA.glob(f"{c}.*"))]
 
 
 def main():

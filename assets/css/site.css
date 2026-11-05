@@ -119,17 +119,20 @@ h2 {
 
 .ligacao--miniatura {
   display: flex;
-  gap: 14px;
-  align-items: center;
-  padding: 10px 14px 10px 10px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 14px 14px;
 }
 
 .ligacao--miniatura::before { content: none; }
 
 .ligacao__miniatura {
   flex: none;
-  width: 72px;
-  height: 72px;
+  align-self: center;
+  width: 100%;
+  max-width: 256px;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 12px;
 }
@@ -168,5 +171,11 @@ h2 {
   .cartao {
     padding: 44px;
     border-radius: var(--raio-moldura);
+  }
+  .ligacao--miniatura {
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 14px 10px 10px;
   }
 }

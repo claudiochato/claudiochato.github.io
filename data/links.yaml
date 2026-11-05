@@ -1,16 +1,24 @@
 # Edita este ficheiro para atualizar a página.
-# Campos: titulo e url são obrigatórios; data é opcional (formato «22 out. 2026»).
+# Campos: titulo e url (para onde a ligação aponta) são obrigatórios.
+# Opcionais: data (formato «22 out. 2026») e instagram (o teu post, de onde vem a miniatura).
+#   instagram: "https://www.instagram.com/p/CODIGO/"
 # Uma secção sem entradas não aparece na página.
-# Para posts do Instagram, corre `python3 scripts/miniatura.py` depois de editar: guarda as miniaturas em falta.
+# Depois de editar, corre `python3 scripts/miniatura.py`: guarda as miniaturas em falta.
 
 # TODO: substituir estes exemplos pelos links reais antes de publicar.
 posts:
-  - titulo: "Exemplo: título do primeiro post"
-    url: "https://example.com/post-1"
-    data: "22 out. 2026"
-  - titulo: "Exemplo: título do segundo post"
-    url: "https://example.com/post-2"
-    data: "15 out. 2026"
+  - titulo: "Salários baixos: o bolo é pequeno ou está mal dividido?"
+    url: "https://www.instagram.com/reel/DfGCIRWyOxJ/"
+    instagram: "https://www.instagram.com/p/DfXBOCxjR_1/"
+    data: "5 nov. 2026"
+  - titulo: "As casas em Portugal subiram 146% desde 2010?"
+    url: "https://www.instagram.com/reel/De9eF4yIhEF/"
+    instagram: "https://www.instagram.com/p/DfVYdcPoZ8i/"
+    data: "4 nov. 2026"
+  - titulo: "Votar à esquerda é repetir o Irão de 1979?"
+    url: "https://www.instagram.com/reel/DfTajAuB3YL/"
+    instagram: "https://www.instagram.com/p/DfUKRsUkVF1/"
+    data: "4 nov. 2026"
 
 links:
   - titulo: "Exemplo: Instagram"

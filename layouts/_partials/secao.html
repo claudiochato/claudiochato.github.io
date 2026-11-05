@@ -3,10 +3,10 @@
   <h2>{{ $.titulo }}</h2>
   <ul class="lista">
     {{- range . }}
-    {{- $miniatura := partial "miniatura.html" .url }}
+    {{- $miniatura := partial "miniatura.html" .instagram }}
     <li>
       <a class="ligacao{{ with $miniatura }} ligacao--miniatura{{ end }}" href="{{ .url }}">
-        {{- with $miniatura }}<img class="ligacao__miniatura" src="{{ .RelPermalink }}" alt="" width="72" height="72" loading="lazy">{{ end }}
+        {{- with $miniatura }}<img class="ligacao__miniatura" src="{{ .RelPermalink }}" alt="" width="256" height="256" loading="lazy">{{ end }}
         <span class="ligacao__texto">
           <span class="ligacao__titulo">{{ .titulo }}</span>
           {{- with .data }}<span class="ligacao__data">{{ . }}</span>{{ end }}
