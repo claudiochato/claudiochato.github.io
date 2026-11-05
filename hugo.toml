@@ -2,7 +2,7 @@ baseURL = "https://claudiochato.github.io/"
 locale = "pt-PT"
 defaultContentLanguage = "pt"
 title = "Cláudio, o Chato: Posts originais e links"
-disableKinds = ["taxonomy", "term", "section", "page", "RSS", "sitemap"]
+disableKinds = ["taxonomy", "term", "section", "RSS", "sitemap"]
 
 [params]
 descricao = "Verificação de factos, afirmação a afirmação — sem decretar vencedores."

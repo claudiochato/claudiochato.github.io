@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#FFE8D6">
-  <title>{{ site.Title }}</title>
-  <meta name="description" content="{{ site.Params.descricao }}">
-  <meta property="og:title" content="{{ site.Title }}">
-  <meta property="og:description" content="{{ site.Params.descricao }}">
+  <title>{{ if .IsPage }}{{ .Title }} · {{ end }}{{ site.Title }}</title>
+  <meta name="description" content="{{ .Params.descricao | default site.Params.descricao }}">
+  <meta property="og:title" content="{{ if .IsPage }}{{ .Title }} · {{ end }}{{ site.Title }}">
+  <meta property="og:description" content="{{ .Params.descricao | default site.Params.descricao }}">
   <meta property="og:type" content="website">
   {{- if fileExists "static/img/mascote.png" }}
   <meta property="og:image" content="{{ "img/mascote.png" | absURL }}">
@@ -23,6 +23,7 @@
 </head>
 <body>
   <main class="cartao">
+    {{ block "cabecalho" . }}
     <header class="cabecalho">
       {{- if fileExists "static/img/mascote.png" }}
       <img class="avatar" src="{{ "img/mascote.png" | relURL }}" alt="Mascote do Cláudio, o Chato, com uma lupa" width="96" height="96">
@@ -32,6 +33,7 @@
       <h1>{{ site.Title }}</h1>
       <p class="lead">{{ site.Params.descricao }}</p>
     </header>
+    {{ end }}
     {{ block "main" . }}{{ end }}
   </main>
 </body>

@@ -1,0 +1,12 @@
+{{ define "cabecalho" }}
+    <header class="cabecalho cabecalho--pagina">
+      <a class="voltar" href="{{ "/" | relURL }}">← Voltar à página inicial</a>
+      <p class="lead">Este é o texto completo da skill que usamos, em inglês, a língua em que está escrita. <a href="{{ "skill/social-media-veracity.skill" | relURL }}" download>Descarrega-a</a> para a instalares no teu Claude.</p>
+    </header>
+{{ end }}
+{{ define "main" }}
+  {{- /* A fonte é o SKILL.md publicado: o cabeçalho YAML é só para o Claude, por isso não é mostrado. */}}
+  <article class="prosa">
+    {{ os.ReadFile "static/skill/SKILL.md" | replaceRE `(?s)\A---\n.*?\n---\n` "" | markdownify }}
+  </article>
+{{ end }}

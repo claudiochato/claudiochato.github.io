@@ -33,7 +33,7 @@ skill:
     data: "Ficheiro para instalar no Claude"
     descarregar: true
   - titulo: "Ler a skill em texto"
-    url: "skill/SKILL.md"
+    url: "skill/"
     data: "Para veres exatamente o que ela pede ao Claude"
   - titulo: "Ver no GitHub e propor alterações"
     url: "https://github.com/claudiochato/claudiochato.github.io/tree/main/static/skill"
