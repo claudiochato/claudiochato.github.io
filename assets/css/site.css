@@ -10,6 +10,7 @@
   --pontos: #F7B3B0;
   --raio-cartao: 20px;
   --raio-moldura: 44px;
+  --medida: 52ch; /* cerca de 70 caracteres por linha */
   --display: "Fredoka", "Nunito", system-ui, sans-serif;
   --texto: "Nunito", system-ui, sans-serif;
 }
@@ -32,7 +33,7 @@ body {
 }
 
 .cartao {
-  max-width: 560px;
+  max-width: calc(var(--medida) + 40px);
   margin: 0 auto;
   padding: 28px 20px 32px;
   background: var(--papel);
@@ -166,9 +167,70 @@ h2 {
   outline-offset: 3px;
 }
 
+.rodape {
+  margin-top: 12px;
+  color: var(--tinta-suave);
+  font-size: 14px;
+}
+
+.rodape a { color: inherit; }
+
+.voltar {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--tinta);
+  font-weight: 800;
+}
+
+.lead a { color: inherit; font-weight: 800; }
+
+.prosa { overflow-wrap: anywhere; }
+
+.prosa h1 {
+  margin-top: 28px;
+  overflow-wrap: normal;
+}
+
+.prosa h3 {
+  margin: 24px 0 8px;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.prosa p, .prosa ul, .prosa ol { margin: 0 0 12px; }
+
+.prosa ul, .prosa ol { padding-left: 24px; }
+
+.prosa li { margin-bottom: 6px; }
+
+.prosa li > ul { margin: 6px 0 0; }
+
+.prosa table {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 16px;
+  overflow-x: auto;
+  font-size: 16px;
+  border-collapse: collapse;
+}
+
+.prosa th, .prosa td {
+  min-width: 120px;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  border: 2px solid var(--tinta);
+  overflow-wrap: normal;
+}
+
+.prosa th { background: var(--papel-claro); }
+
 @media (min-width: 640px) {
   body { padding: 44px; }
   .cartao {
+    max-width: calc(var(--medida) + 88px);
     padding: 44px;
     border-radius: var(--raio-moldura);
   }

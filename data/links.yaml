@@ -2,6 +2,7 @@
 # Campos: titulo e url (para onde a ligação aponta) são obrigatórios.
 # Opcionais: data (formato «22 out. 2026») e instagram (o teu post, de onde vem a miniatura).
 #   instagram: "https://www.instagram.com/p/CODIGO/"
+# Em skill, descarregar: true faz a ligação descarregar o ficheiro em vez de o abrir.
 # Uma secção sem entradas não aparece na página.
 # Depois de editar, corre `python3 scripts/miniatura.py`: guarda as miniaturas em falta.
 
@@ -25,3 +26,14 @@ links:
     url: "https://example.com/instagram"
   - titulo: "Exemplo: outro link"
     url: "https://example.com/outro"
+
+skill:
+  - titulo: "Descarregar a skill"
+    url: "skill/social-media-veracity.skill"
+    data: "Ficheiro para instalar no Claude"
+    descarregar: true
+  - titulo: "Ler a skill em texto"
+    url: "skill/"
+    data: "Para veres exatamente o que ela pede ao Claude"
+  - titulo: "Ver no GitHub e propor alterações"
+    url: "https://github.com/claudiochato/claudiochato.github.io/tree/main/static/skill"
