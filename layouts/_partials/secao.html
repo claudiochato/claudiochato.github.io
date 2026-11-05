@@ -8,13 +8,19 @@
     {{- range . }}
     {{- $miniatura := partial "miniatura.html" .instagram }}
     <li>
-      <a class="ligacao{{ with $miniatura }} ligacao--miniatura{{ end }}" href="{{ .url }}" target="_blank" rel="noopener"{{ if .descarregar }} download{{ end }}>
+      <a class="ligacao{{ with $miniatura }} ligacao--miniatura{{ end }}{{ with .instagram }} ligacao--com-extras{{ end }}" href="{{ .url }}" target="_blank" rel="noopener"{{ if .descarregar }} download{{ end }}>
         {{- with $miniatura }}<img class="ligacao__miniatura" src="{{ .RelPermalink }}" alt="" width="256" height="256" loading="lazy">{{ end }}
         <span class="ligacao__texto">
           <span class="ligacao__titulo">{{ .titulo }}</span>
           {{- with .data }}<span class="ligacao__data">{{ . }}</span>{{ end }}
         </span>
       </a>
+      {{- if .instagram }}
+      <div class="extras">
+        <a class="extras__ligacao" href="{{ .url }}" target="_blank" rel="noopener" aria-label="Post original: {{ .titulo }}">Post original</a>
+        <a class="extras__ligacao" href="{{ .instagram }}" target="_blank" rel="noopener" aria-label="Nossa Análise: {{ .titulo }}">Nossa Análise</a>
+      </div>
+      {{- end }}
     </li>
     {{- end }}
   </ul>
