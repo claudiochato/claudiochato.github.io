@@ -1,13 +1,17 @@
 # claudiochato.github.io
 
-Código do linktree do Cláudio, o Chato no Instagram. Built with Hugo and deployed to GitHub Pages at https://claudiochato.github.io/.
+Código da página de links do Cláudio, o Chato no Instagram, publicada em https://claudiochato.github.io/.
 
-- **Edit the links:** `data/links.yaml`
-- **Thumbnails:** in `data/links.yaml`, `url` is where the entry links to and `instagram` is your post that supplies its thumbnail. Set `instagram`, then run `python3 scripts/miniatura.py`. It saves any missing thumbnails to `assets/miniaturas/`, so commit those too. If Instagram refuses the download, save the image yourself and run `python3 scripts/miniatura.py URL --ficheiro image.jpg`.
-- **Mascot:** put `mascote.png` at `static/img/mascote.png`. Until then the avatar shows a "C".
-- **Preview:** `hugo server`
-- **Deploy:** push to `main`.
+## Licença
 
-## License
+O código está sob a licença MIT (ver `LICENSE`). Essa licença não abrange o nome «Cláudio, o Chato», a mascote, as miniaturas nem as restantes imagens da marca e dos posts, que têm todos os direitos reservados.
 
-The code is under the MIT License (see `LICENSE`). That license does not cover the name "Cláudio, o Chato", the mascot, the thumbnails or the other brand and post images, which are all rights reserved.
+## Informação para desenvolvimento
+
+O site é feito com Hugo e publicado no GitHub Pages.
+
+- **Editar os links:** `data/links.yaml`
+- **Miniaturas:** em `data/links.yaml`, `url` é o destino da ligação e `instagram` é o teu post, de onde vem a miniatura. Preenche `instagram` e corre `python3 scripts/miniatura.py`. O script guarda as miniaturas em falta em `assets/miniaturas/`, por isso faz commit também desses ficheiros. Se o Instagram recusar o download, guarda a imagem à mão e corre `python3 scripts/miniatura.py URL --ficheiro imagem.jpg`.
+- **Mascote:** coloca `mascote.png` em `static/img/mascote.png`. Até lá, o avatar mostra um «C».
+- **Pré-visualizar:** `hugo server`
+- **Publicar:** faz push para `main`.
