@@ -37,6 +37,3 @@ skill:
     data: "Para veres exatamente o que ela pede ao Claude"
   - titulo: "Ver no GitHub e propor alterações"
     url: "https://github.com/claudiochato/claudiochato.github.io/tree/main/static/skill"
-  - titulo: "Licença: CC BY-SA 4.0"
-    url: "skill/LICENSE.txt"
-    data: "Podes alterá-la e republicá-la, desde que as versões publicadas fiquem sob a mesma licença"

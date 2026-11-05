@@ -10,6 +10,7 @@
   --pontos: #F7B3B0;
   --raio-cartao: 20px;
   --raio-moldura: 44px;
+  --medida: 52ch; /* cerca de 70 caracteres por linha */
   --display: "Fredoka", "Nunito", system-ui, sans-serif;
   --texto: "Nunito", system-ui, sans-serif;
 }
@@ -32,7 +33,7 @@ body {
 }
 
 .cartao {
-  max-width: 560px;
+  max-width: calc(var(--medida) + 40px);
   margin: 0 auto;
   padding: 28px 20px 32px;
   background: var(--papel);
@@ -166,6 +167,14 @@ h2 {
   outline-offset: 3px;
 }
 
+.rodape {
+  margin-top: 12px;
+  color: var(--tinta-suave);
+  font-size: 14px;
+}
+
+.rodape a { color: inherit; }
+
 .voltar {
   display: inline-block;
   margin-bottom: 12px;
@@ -221,6 +230,7 @@ h2 {
 @media (min-width: 640px) {
   body { padding: 44px; }
   .cartao {
+    max-width: calc(var(--medida) + 88px);
     padding: 44px;
     border-radius: var(--raio-moldura);
   }
