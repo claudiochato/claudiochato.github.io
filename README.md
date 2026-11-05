@@ -37,7 +37,7 @@ Nenhuma destas licenças abrange o nome «Cláudio, o Chato», a mascote, as min
 O site é feito com Hugo e publicado no GitHub Pages.
 
 - **Editar os links:** `data/links.yaml`
-- **Miniaturas:** em `data/links.yaml`, `url` é o destino da ligação e `instagram` é o teu post, de onde vem a miniatura. Preenche `instagram` e corre `python3 scripts/miniatura.py`. O script guarda as miniaturas em falta em `assets/miniaturas/`, por isso faz commit também desses ficheiros. Se o Instagram recusar o download, guarda a imagem à mão e corre `python3 scripts/miniatura.py URL --ficheiro imagem.jpg`.
+- **Miniaturas:** em `data/links.yaml`, `url` é o destino da ligação e `instagram` é o teu post, de onde vem a miniatura. Preenche `instagram` e corre `python3 scripts/miniatura.py`. O script guarda as miniaturas em falta em `assets/miniaturas/`, por isso faz commit também desses ficheiros. O script também avisa se alguma ligação do Instagram tiver parâmetros depois do `?`, que podem identificar quem a partilhou. Remove-os antes do commit. Se o Instagram recusar o download, guarda a imagem à mão e corre `python3 scripts/miniatura.py URL --ficheiro imagem.jpg`.
 - **Skill:** os ficheiros estão em `static/skill/`. A página `/skill/` do site é gerada a partir do `SKILL.md`, por isso não precisa de ser editada à parte. Depois de aceitar uma alteração ao `SKILL.md`, gera de novo `social-media-veracity.skill` a partir dele, para as duas versões não ficarem diferentes.
 - **Mascote:** `static/img/mascote.png`, usada como avatar, favicon e imagem de partilha.
 - **Pré-visualizar:** `hugo server`

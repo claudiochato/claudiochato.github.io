@@ -4,6 +4,9 @@
   python3 scripts/miniatura.py                    posts de data/links.yaml (campo instagram) sem miniatura
   python3 scripts/miniatura.py URL [URL ...]      posts indicados (substitui as existentes)
   python3 scripts/miniatura.py URL --ficheiro F   usa uma imagem guardada à mão
+
+Avisa se data/links.yaml tiver ligações do Instagram com parâmetros depois do «?»:
+podem identificar quem as partilhou, por isso devem ser removidos antes do commit.
 """
 import argparse
 import html
@@ -20,6 +23,7 @@ DADOS = RAIZ / "data" / "links.yaml"
 
 RE_POST = re.compile(r"https://(?:www\.)?instagram\.com/(?:[\w.]+/)?(?:p|reel|tv)/([\w-]+)")
 RE_CAMPO = re.compile(r"""^[ \t-]*instagram:[ \t]*["']?(\S+?)["']?[ \t]*$""", re.M)
+RE_PARAMETROS = re.compile(r"""(https?://(?:[\w-]+\.)*instagram\.com/[^\s"'?#]*)\?[^\s"']*""", re.I)
 RE_EMBED = re.compile(r'<img\b[^>]*class="[^"]*EmbeddedMediaImage[^"]*"[^>]*>', re.I)
 RE_ATRIBUTO = r'\b%s="([^"]*)"'
 ANFITRIOES = ("cdninstagram.com", "fbcdn.net")
@@ -103,6 +107,26 @@ def urls_em_falta():
     return [c for c in codigos if not any(PASTA.glob(f"{c}.*"))]
 
 
+def ligacoes_com_parametros(texto):
+    """Devolve (linha, ligação sem parâmetros) de cada ligação do Instagram com query string."""
+    return [
+        (numero, m.group(1))
+        for numero, linha in enumerate(texto.splitlines(), 1)
+        for m in RE_PARAMETROS.finditer(linha)
+    ]
+
+
+def avisar_parametros():
+    ligacoes = ligacoes_com_parametros(DADOS.read_text(encoding="utf-8"))
+    for numero, limpa in ligacoes:
+        print(
+            f"Aviso: {DADOS.relative_to(RAIZ)}, linha {numero}: esta ligação tem parâmetros "
+            f"que podem identificar quem a partilhou. Usa: {limpa}",
+            file=sys.stderr,
+        )
+    return len(ligacoes)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Guarda as miniaturas dos posts do Instagram.")
     parser.add_argument("urls", nargs="*", help="URLs dos posts")
@@ -112,7 +136,7 @@ def main():
     if args.ficheiro and len(args.urls) != 1:
         parser.error("--ficheiro precisa de exatamente um URL")
 
-    erros = 0
+    erros = avisar_parametros()
     try:
         codigos = [codigo_do_post(u) for u in args.urls] or urls_em_falta()
     except Falha as e:
