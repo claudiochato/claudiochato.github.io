@@ -1,0 +1,10 @@
+{{- $miniatura := false }}
+{{- with findRESubmatch `instagram\.com/(?:[\w.]+/)?(?:p|reel|tv)/([\w-]+)` . 1 }}
+  {{- $codigo := index (index . 0) 1 }}
+  {{- with resources.GetMatch (printf "miniaturas/%s.*" $codigo) }}
+    {{- $miniatura = .Fill "144x144 Center webp q80" }}
+  {{- else }}
+    {{- warnf "Falta a miniatura de %s: corre python3 scripts/miniatura.py" $codigo }}
+  {{- end }}
+{{- end }}
+{{- return $miniatura }}

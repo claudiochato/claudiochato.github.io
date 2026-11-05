@@ -1,0 +1,19 @@
+# Edita este ficheiro para atualizar a página.
+# Campos: titulo e url são obrigatórios; data é opcional (formato «22 out. 2026»).
+# Uma secção sem entradas não aparece na página.
+# Para posts do Instagram, corre `python3 scripts/miniatura.py` depois de editar: guarda as miniaturas em falta.
+
+# TODO: substituir estes exemplos pelos links reais antes de publicar.
+posts:
+  - titulo: "Exemplo: título do primeiro post"
+    url: "https://example.com/post-1"
+    data: "22 out. 2026"
+  - titulo: "Exemplo: título do segundo post"
+    url: "https://example.com/post-2"
+    data: "15 out. 2026"
+
+links:
+  - titulo: "Exemplo: Instagram"
+    url: "https://example.com/instagram"
+  - titulo: "Exemplo: outro link"
+    url: "https://example.com/outro"

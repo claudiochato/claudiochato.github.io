@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FFE8D6">
+  <title>{{ site.Title }}</title>
+  <meta name="description" content="{{ site.Params.descricao }}">
+  <meta property="og:title" content="{{ site.Title }}">
+  <meta property="og:description" content="{{ site.Params.descricao }}">
+  <meta property="og:type" content="website">
+  {{- if fileExists "static/img/mascote.png" }}
+  <meta property="og:image" content="{{ "img/mascote.png" | absURL }}">
+  <link rel="icon" type="image/png" href="{{ "img/mascote.png" | relURL }}">
+  {{- end }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap">
+  {{- with resources.Get "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{- end }}
+</head>
+<body>
+  <main class="cartao">
+    <header class="cabecalho">
+      {{- if fileExists "static/img/mascote.png" }}
+      <img class="avatar" src="{{ "img/mascote.png" | relURL }}" alt="Mascote do Cláudio, o Chato, com uma lupa" width="96" height="96">
+      {{- else }}
+      <span class="avatar avatar--vazio" aria-hidden="true">C</span>
+      {{- end }}
+      <h1>{{ site.Title }}</h1>
+      <p class="lead">{{ site.Params.descricao }}</p>
+    </header>
+    {{ block "main" . }}{{ end }}
+  </main>
+</body>
+</html>
