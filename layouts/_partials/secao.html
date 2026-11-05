@@ -1,6 +1,6 @@
 {{- with .itens }}
 <section class="secao">
-  <h2>{{ $.titulo }}</h2>
+  <h2 id="{{ $.id }}">{{ $.titulo }}</h2>
   {{- with $.nota }}
   <p class="nota">{{ . }}</p>
   {{- end }}
