@@ -36,4 +36,4 @@ skill:
     url: "skill/"
     data: "Para veres exatamente o que ela pede ao Claude"
   - titulo: "Ver no GitHub e propor alterações"
-    url: "https://github.com/claudiochato/claudiochato.github.io/tree/main/static/skill"
+    url: "https://github.com/claudiochato/claudiochato.github.io/blob/main/static/skill/SKILL.md"
