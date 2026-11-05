@@ -6,7 +6,6 @@
 # Uma secção sem entradas não aparece na página.
 # Depois de editar, corre `python3 scripts/miniatura.py`: guarda as miniaturas em falta.
 
-# TODO: substituir estes exemplos pelos links reais antes de publicar.
 posts:
   - titulo: "Salários baixos: o bolo é pequeno ou está mal dividido?"
     url: "https://www.instagram.com/reel/DfGCIRWyOxJ/"
@@ -22,10 +21,8 @@ posts:
     data: "4 nov. 2026"
 
 links:
-  - titulo: "Exemplo: Instagram"
-    url: "https://example.com/instagram"
-  - titulo: "Exemplo: outro link"
-    url: "https://example.com/outro"
+  - titulo: "O nosso GitHub"
+    url: "https://github.com/claudiochato/claudiochato.github.io/"
 
 skill:
   - titulo: "Descarregar a skill"
