@@ -208,12 +208,6 @@ h2 {
 
 .ligacao--instagram::before { content: none; }
 
-.ligacao--instagram .ligacao__titulo {
-  /* O endereço fica sempre numa só linha: o tamanho acompanha a largura do ecrã. */
-  font-size: clamp(10px, calc((100vw - 126px) / 18.5), 18px);
-  white-space: nowrap;
-}
-
 .ligacao__icone {
   flex: none;
   width: 22px;
