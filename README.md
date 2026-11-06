@@ -11,6 +11,18 @@ Qualquer pessoa pode instalar a mesma skill no seu Claude e usá-la em privado. 
 - [Descarregar a skill](https://claudiochato.github.io/skill/social-media-veracity.skill), o ficheiro para instalar no Claude
 - [Ler a skill em texto](static/skill/SKILL.md)
 
+Depois de instalada, basta escrever isto no Claude, com o URL do conteúdo que queres verificar:
+
+```
+/social-media-veracity <url>
+```
+
+Depois do URL, podes acrescentar o que quiseres, como a língua em que queres a análise:
+
+```
+/social-media-veracity <url> faz a análise em português
+```
+
 Mantemos a skill no Git para que qualquer pessoa possa analisá-la e propor alterações.
 
 ## Contribuir melhorias para a skill

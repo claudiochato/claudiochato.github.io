@@ -24,6 +24,9 @@
     </li>
     {{- end }}
   </ul>
+  {{- with $.uso }}
+  <div class="uso">{{ . | safeHTML }}</div>
+  {{- end }}
   {{- with $.rodape }}
   <footer class="rodape">{{ . | safeHTML }}</footer>
   {{- end }}

@@ -230,6 +230,26 @@ h2 {
   outline-offset: 3px;
 }
 
+.uso {
+  margin-top: 16px;
+  color: var(--tinta-2);
+}
+
+.uso p { margin: 0 0 8px; }
+
+.uso code {
+  display: block;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--tinta);
+  font-size: 16px;
+  overflow-wrap: anywhere;
+  background: var(--papel-claro);
+}
+
+.uso code:last-child { margin-bottom: 0; }
+
 .rodape {
   margin-top: 12px;
   color: var(--tinta-suave);
